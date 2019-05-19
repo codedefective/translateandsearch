@@ -1,5 +1,5 @@
 {
-    "name" : "translateandsearch",
+    "name" : "codedefective/translateandsearch",
     "description": "Translate and Search",
     "require": {
         "php": "^7.2",
