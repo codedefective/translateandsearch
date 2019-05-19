@@ -12,7 +12,12 @@ Installation
 
 Using Composer (recommended)
 ----------------------------
- Clone the repository and manually invoke `composer` using the shipped
+
+    composer require codedefective/translateandsearch dev-master
+   
+ 
+
+Alternative, clone the repository and manually invoke `composer` using the shipped
 `composer.phar`:
 
     cd my/project/dir
