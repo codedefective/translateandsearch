@@ -1,0 +1,51 @@
+<div class="container-contact100">
+ 
+    <div class="wrap-contact100">
+        <?php
+            $form->setAttribute('class', 'contact100-form validate-form');
+            $form->setAttribute('action', $this->url('translate'));
+            $this->formCollection($form, true);
+            $form->prepare();
+            
+            echo $this->form()
+                      ->openTag($form);
+        ?>
+        <div>
+            <span class="contact100-form-title">
+                <?php echo $this->translate('Translate and Search') ?>
+            </span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="You are must enter a text">
+            <?
+                echo $this->formLabel($form->get('content'));
+                echo $this->formTextarea($form->get('content'));
+            ?>
+            <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 " data-validate="Select Target Language">
+            <?php echo $this->formLabel($form->get('targetLang')) ?>
+            <div>
+                <?php echo $this->formSelect($form->get('targetLang')); ?>
+                <div class="dropDownSelect2"></div>
+            </div>
+            <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="You are must enter a text">
+            <?
+                echo $this->formLabel($form->get('searchText'));
+                echo $this->formInput($form->get('searchText'));
+            ?>
+            <span class="focus-input100"></span>
+        </div>
+
+        <div class="container-contact100-form-btn">
+            <?php echo $this->formElement($form->get('translateNow')); ?>
+        </div>
+        <?php echo $this->form()
+                        ->closeTag();
+        ?>
+
+        <div class="contact100-more flex-col-c-m" style="background-image: url('form/images/bg-01.jpg');"></div>
+    </div>
+</div>
+

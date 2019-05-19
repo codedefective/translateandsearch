@@ -1,0 +1,72 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <?php echo $this->headTitle($this->translate('Translate and Search'))
+                    ->setSeparator(' - ')
+                    ->setAutoEscape(false) ?>
+    <?php echo $this->headMeta()
+                    ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                    ->appendHttpEquiv('X-UA-Compatible', 'IE=edge') ?>
+    
+    <?php
+        $this->headLink([
+            'rel'  => 'shortcut icon',
+            'type' => 'image/vnd.microsoft.icon',
+            'href' => $this->basePath() . 'form/images/icons/favicon.ico'
+        ])
+             ->appendStylesheet($this->basePath() . 'form/vendor/bootstrap/css/bootstrap.min.css')
+             ->appendStylesheet($this->basePath() . 'form/fonts/font-awesome-4.7.0/css/font-awesome.min.css')
+             ->appendStylesheet($this->basePath() . 'form/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')
+             ->appendStylesheet($this->basePath() . 'form/vendor/animate/animate.css')
+             ->appendStylesheet($this->basePath() . 'form/vendor/css-hamburgers/hamburgers.min.css')
+             ->appendStylesheet($this->basePath() . 'form/vendor/animsition/css/animsition.min.css')
+             ->appendStylesheet($this->basePath() . 'form/vendor/select2/select2.min.css')
+             ->appendStylesheet($this->basePath() . 'form/vendor/daterangepicker/daterangepicker.css')
+             ->appendStylesheet($this->basePath() . 'form/css/util.css')
+             ->appendStylesheet($this->basePath() . 'form/css/main.css');
+        if($_POST){
+            $this->headLink()
+                 ->appendStylesheet($this->basePath() . 'results/css/cover.css');
+        }
+        echo $this->headLink();
+    ?>
+
+
+</head>
+<body>
+<?php echo $this->content; ?>
+<?php echo $this->inlineScript()
+                ->prependFile($this->basePath() . 'form/js/main.js')
+                ->prependFile($this->basePath() . 'form/vendor/countdowntime/countdowntime.js')
+                ->prependFile($this->basePath() . 'form/vendor/daterangepicker/daterangepicker.js')
+                ->prependFile($this->basePath() . 'form/vendor/daterangepicker/moment.min.js')
+                ->prependFile($this->basePath() . 'form/vendor/select2/select2.min.js')
+                ->prependFile($this->basePath() . 'form/vendor/bootstrap/js/bootstrap.min.js')
+                ->prependFile($this->basePath() . 'form/vendor/bootstrap/js/popper.js')
+                ->prependFile($this->basePath() . 'form/vendor/animsition/js/animsition.min.js')
+                ->prependFile($this->basePath() . 'form/vendor/jquery/jquery-3.2.1.min.js')
+?>
+
+
+<script>
+    $(".js-select2").each(function(){
+        $(this).select2({
+            minimumResultsForSearch: 20,
+            dropdownParent: $(this).next('.dropDownSelect2')
+        });
+    })
+    $(".js-select2").each(function(){
+        $(this).on('select2:open', function(e){
+            $(this).parent().next().addClass('eff-focus-selection');
+        });
+    });
+    $(".js-select2").each(function(){
+        $(this).on('select2:close', function(e){
+            $(this).parent().next().removeClass('eff-focus-selection');
+        });
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <a href="<?php echo $this->url('home') ?>"><h3 class="masthead-brand">Translate and Search</h3></a>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="#">Results</a>
+                <a class="nav-link" href="<?php echo $this->url('home') ?>">Re Translate</a>
+                <a class="nav-link" href="mailto:erdem@erdemakbulut.com.tr">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main role="main" class="inner cover">
+        <div class="clearfix">
+            <h5 class="text-left pull-left">Detected Language: <span><?=$detect['name']?> (<?=$detect['code']?>)</span></h5>
+            <h5 class="text-right pull-right">Translated Language: <span><?=$translated['name']?> (<?=$translated['code']?>)</span></h5>
+
+        </div>
+        <hr>
+        <p class="lead result" id="result">
+            <? echo $result['text'] ?>
+        </p>
+
+    </main>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Application Creator <a href="https://github.com/codedefective">Erdem AKBULUT</a>,
+                <a href="https://www.linkedin.com/in/erdemakbulut">@erdemakbulut</a>.</p>
+        </div>
+    </footer>
+    
+    <?php if($search): ?>
+    <script>
+      
+     
+        function highlight(searchVal){
+            var opar = document.getElementById('result').innerHTML;
+            var paragraph = document.getElementById('result');
+            var search = searchVal;
+            var searchCapitalized = searchVal.charAt(0).toUpperCase() + searchVal.slice(1);
+            search = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            searchCapitalized  = searchCapitalized.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            var re = new RegExp(search, 'g');
+            var reCa = new RegExp(searchCapitalized, 'g');
+            
+            if(search.length > 0 || searchCapitalized.length > 0){
+                if(search.length > 0){
+                    paragraph.innerHTML = opar.replace(re, '<span class="finded">$&</span>');
+                }
+                if(searchCapitalized.length > 0){
+                    paragraph.innerHTML =  paragraph.innerHTML.replace(reCa, '<span class="finded">$&</span>');
+                }
+            }else{
+                paragraph.innerHTML = opar;
+            }
+    
+           
+           
+          
+            
+        }
+        
+        highlight("<?=$search?>");
+    </script>
+<?php endif; ?>
