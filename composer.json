@@ -1,4 +1,5 @@
 {
+    "name" : "translateandsearch",
     "description": "Translate and Search",
     "require": {
         "php": "^7.2",
